@@ -78,3 +78,4 @@ const getAccounts = function() {
     getCertificateData,
     generateCertificate
   };
+  
