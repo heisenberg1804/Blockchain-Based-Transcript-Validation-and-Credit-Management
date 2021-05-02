@@ -924,29 +924,6 @@
       "address": "0x69AcE20CaB3898ad4159e125E9105cf12b26b8a4",
       "transactionHash": "0xbcf038cd28cc94dd79128b208da14d01fe4e26715aef595f10dd4acc9716bb10"
     },
-<<<<<<< HEAD
-    "1618067609555": {
-      "events": {},
-      "links": {},
-      "address": "0x6F2366edB24f0523C9285b9Aae1765E2a69e6e35",
-      "transactionHash": "0xd19553fddb62c69ab9857d6a67e4e332a875d659fba1c3917610cbe956cce9cb"
-    },
-    "1618071690806": {
-      "events": {},
-      "links": {},
-      "address": "0xaa99AF073D7C93B89e05d58B7635Bf20eE535e9A",
-      "transactionHash": "0xa9d3a490e14369973065f8236f3992f16da7385e1f28f6fcabb91688666ab5bb"
-    },
-    "1618078960982": {
-      "events": {},
-      "links": {},
-      "address": "0xa34330290a7818cA04D9ED1ee8ddDB9e1E652356",
-      "transactionHash": "0x82850008d5ba0be4e0ae2f6f9587b7ee8ed6c9f0b0a534ba7a29f1423527d345"
-    }
-  },
-  "schemaVersion": "3.3.4",
-  "updatedAt": "2021-04-10T18:23:03.893Z",
-=======
     "1618072363281": {
       "events": {},
       "links": {},
@@ -976,19 +953,22 @@
       "links": {},
       "address": "0xaD7b1C7e9BE6Bdc87397C4b08031eFfba3566A57",
       "transactionHash": "0xafea3e0efb65625ec6746975d2d58cb43454305b29f61d6ff3e5d11ea830a7d5"
+    },
+    "1619984222623": {
+      "events": {},
+      "links": {},
+      "address": "0xf16d7a09485A0AdFb5aC94022ae37EF4f4C32d8d",
+      "transactionHash": "0x0be03e5249191ba61cbf678c4d36e4d275da34ce2d9496f43859fbfdb54f3b86"
+    },
+    "1619986512952": {
+      "events": {},
+      "links": {},
+      "address": "0xc8484f623E527163446704e52024F9D825304C02",
+      "transactionHash": "0x6cb5cc049ba6d08cea4fe0bea3b0984c59fa3c673f9739925346c3de6320c3c0"
     }
   },
   "schemaVersion": "3.3.4",
-<<<<<<< HEAD
-<<<<<<< HEAD
-  "updatedAt": "2021-04-10T16:53:55.522Z",
->>>>>>> 19753183db34649e50bd327cc14f9ccf0d4363d7
-=======
-  "updatedAt": "2021-04-13T16:32:40.317Z",
->>>>>>> cf1aa68592bb84799b34ed8b841d9e1b029a11f4
-=======
-  "updatedAt": "2021-05-01T13:23:19.289Z",
->>>>>>> 37e3082adce8417617104c5ada3537d284b0bd71
+  "updatedAt": "2021-05-02T20:22:05.701Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}
