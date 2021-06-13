@@ -1,76 +1,83 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React,{useEffect, useState} from 'react';
+import{useParams} from 'react-router-dom';
+import M from 'materialize-css';
 
-function Certificate(props) {
-  const { title, name, date, hash, logo } = props;
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="1000"
-      height="700"
-      id="certificate"
-    >
-      <rect
-        x="50"
-        y="25"
-        rx="20"
-        ry="20"
-        width="900"
-        height="600"
-        id="border"
-      />
-      <text x="500" y="100" text-anchor="middle" fill="black" id="bodyTitle">
-        Certificate
-      </text>
-      <text x="500" y="125" text-anchor="middle" fill="black" id="bodySubTitle">
-        of
-      </text>
-      <line x1="250" y1="260" x2="750" y2="260" id="titleUnderLine" />
-      <text x="500" y="250" text-anchor="middle" fill="black" id="title">
-        {title}
-      </text>
-      <text
-        x="500"
-        y="300"
-        text-anchor="middle"
-        fill="black"
-        id="subTitleHeader"
-      >
-        awarded to
-      </text>
-      <text x="500" y="400" text-anchor="middle" fill="black" id="name">
-        {name}
-      </text>
-      <line x1="200" y1="410" x2="800" y2="410" id="titleUnderLine" />
-      <text x="500" y="440" text-anchor="middle" fill="black" id="bodySubTitle">
-        on
-      </text>
-      <text x="500" y="500" text-anchor="middle" fill="black" id="date">
-        {date}
-      </text>
-      <line x1="400" y1="510" x2="600" y2="510" id="titleUnderLine" />
-      <text x="100" y="575" text-anchor="start" fill="black" id="hash">
-        ID: {hash}
-      </text>
-      <image
-        x="725"
-        y="500"
-        height="80px"
-        width="120px"
-        id="logo"
-        href={logo}
-      />
-      Sorry, your browser does not support inline SVG.
-    </svg>
-  );
-}
+const Certificate = ()=>{
+    const [data, setData] = useState("");
+    const {id} = useParams();
 
-Certificate.propTypes = {
-    name: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
-    logo: PropTypes.string.isRequired,
-    hash: PropTypes.string.isRequired,
+    useEffect(
+        ()=> {
+             fetch(`/certificate/data/${id}`,{
+                method: "get",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+            })
+            .then(res => res.json())
+            .then(
+                data => {
+                    if (data.err){
+                    M.toast({html: data.err})
+                }
+                else{
+                    console.log(data)
+                    setData(data)
+                }
+            })
+        }, [id])
+
+    const Verify = async () => {
+        await fetch(`/certificate/verify/${id}`,{
+            method: "get",
+            headers:{
+                "Content-Type":"application/json"
+            },
+        })
+        .then(res => res.json())
+        .then(
+            data => {
+                if (data.err){
+                    M.toast({html: data.err})
+                }
+                else{
+                    M.toast({html: data.message})
+                }
+            }
+        )
+    }
+
+    return(
+            <div className="container">
+                <div className="row">
+                    <div className="col s12 m6">
+                        <div className="card container">
+                    <div className="card-image">
+                        <span className="card-title">Certificate of <b>{data.courseName}</b></span>
+                    </div>
+                    <div className="card-content">
+                        <p>Awarded to <b>{data.candidateName}</b> on <b>{new Date(data.assignDate).toDateString()}</b> by <b>{data.orgName}</b></p>
+                    </div>
+                    <div className="card-action">
+                        <button className="btn waves-effect waves-light grey darken-4"
+                            onClick={()=>{
+                                Verify()
+                            }}>
+                                Verify
+                        </button>
+                        <button className="btn">
+                            ID: {data.certificateId}
+                        </button>
+                    </div>
+                </div>
+    </div>
+  </div>
+            </div>
+      
+                
+           
+    )
 }
 
 export default Certificate;
+
